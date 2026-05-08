@@ -1,68 +1,44 @@
 [gd_scene format=3 uid="uid://bsgtj6vsfv4i3"]
 
 [ext_resource type="PackedScene" uid="uid://c8q1yf2o0h5rd" path="res://Assets/Sprite_Asset/player.tscn" id="1_60j5u"]
-[ext_resource type="PackedScene" uid="uid://cyfivi3etho63" path="res://Assets/Weapon_Assets/pebble.tscn" id="2_j6qpn"]
 [ext_resource type="Script" uid="uid://kiowjaqaka5y" path="res://Assets/Playground_Asset/match_manager.gd" id="2_lwa36"]
-[ext_resource type="PackedScene" uid="uid://b6tq16uryegco" path="res://Assets/Weapon_Assets/knife.tscn" id="3_lx8iu"]
+[ext_resource type="PackedScene" uid="uid://xbj45fhfakqv" path="res://Assets/Playground_Asset/Arena-Circle.tscn" id="4_j6qpn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnn4q"]
-size = Vector2(1168, 20)
+[sub_resource type="Environment" id="Environment_xxnbi"]
+glow_enabled = true
 
 [node name="playground" type="Node2D" unique_id=397166008]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1739277131]
-offset_right = 1150.0
-offset_bottom = 647.0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=916074172]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(320, 180)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.056291588, 0.056291603, 0.056291595, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="WallTop" type="StaticBody2D" parent="." unique_id=29739933]
-position = Vector2(3, 83)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1317932073]
-position = Vector2(574, 0)
-shape = SubResource("RectangleShape2D_fnn4q")
-
-[node name="WallTop2" type="StaticBody2D" parent="." unique_id=443385529]
-position = Vector2(2, -132)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop2" unique_id=1128890984]
-position = Vector2(574, 646)
-shape = SubResource("RectangleShape2D_fnn4q")
-
-[node name="WallTop3" type="StaticBody2D" parent="." unique_id=531911084]
-position = Vector2(149, 23)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop3" unique_id=962217967]
-position = Vector2(-11, 361)
-rotation = -1.5707964
-shape = SubResource("RectangleShape2D_fnn4q")
-
-[node name="WallTop4" type="StaticBody2D" parent="." unique_id=1696795402]
-position = Vector2(-72, -29)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop4" unique_id=1171580846]
-position = Vector2(1151, 354)
-rotation = -1.5707964
-shape = SubResource("RectangleShape2D_fnn4q")
-
-[node name="FighterA" parent="." unique_id=1355403827 groups=["fighters"] instance=ExtResource("1_60j5u")]
-position = Vector2(918, 348)
-starting_weapon = ExtResource("2_j6qpn")
+color = Color(0, 0, 0, 1)
 
 [node name="FighterB" parent="." unique_id=218334752 groups=["fighters"] instance=ExtResource("1_60j5u")]
-position = Vector2(215, 348)
-starting_weapon = ExtResource("3_lx8iu")
+position = Vector2(108, 181)
+base_speed = 300.0
+
+[node name="FighterB2" parent="." unique_id=863464802 groups=["fighters"] instance=ExtResource("1_60j5u")]
+position = Vector2(517, 171)
+base_speed = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1756919517]
-position = Vector2(573, 328)
+position = Vector2(320, 180)
 zoom = Vector2(0.5, 0.5)
 
 [node name="MatchManager" type="Node2D" parent="." unique_id=1639397531]
+position = Vector2(224, 97)
 script = ExtResource("2_lwa36")
+
+[node name="Arena-Circle" parent="." unique_id=750826448 instance=ExtResource("4_j6qpn")]
+position = Vector2(320, 180)
+line_width = 10.0
+glow_color = Color(1, 1, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=28203447]
+environment = SubResource("Environment_xxnbi")

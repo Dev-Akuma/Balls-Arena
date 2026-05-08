@@ -2,3 +2,26 @@ res://Assets/Interfaces/campaign_selection.tscn
 res://Assets/Interfaces/main_menu.tscn
 res://Assets/Interfaces/Main_Menu_Font_Theme.tres
 res://Assets/Interfaces/Title_Thme.tres
+res://main_menu.gd
+res://Assets/Interfaces/campaign_selection.gd
+res://Assets/Playground_Asset/playground.tscn
+res://Assets/Interfaces/main_menu.gdshader
+res://Assets/Interfaces/game_title.gd
+res://Assets/Weapon_Assets/knife.tscn
+res://Assets/Sprite_Asset/player.tscn
+res://node_2d.gd
+res://Assets/Playground_Asset/node_2d.tscn
+res://Assets/Playground_Asset/Arena-Circle.tscn
+res://Assets/Sprite_Asset/player.gd
+res://Arena-Circle.gd
+res://floating_object.gd
+res://Assets/Playground_Asset/floating_object.tscn
+res://background_arena.gd
+res://Assets/Playground_Asset/background_arena.tscn
+res://Assets/Playground_Asset/Floating-Object 2X1.tscn
+res://Assets/Playground_Asset/Floating-Object 1X1.tscn
+res://Assets/Playground_Asset/Floating-Object 3X1.tscn
+res://debris.gd
+res://Assets/Interfaces/debris_spawner.gd
+res://Assets/Playground_Asset/debris.tscn
+res://Assets/Interfaces/Fade_transition.tscn

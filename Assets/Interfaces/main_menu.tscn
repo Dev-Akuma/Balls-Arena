@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c6xtlvbbnjpj" path="res://main_menu.gd" id="1_slo1b"]
 [ext_resource type="Theme" uid="uid://6gds1wm7rxpl" path="res://Assets/Interfaces/Main_Menu_Font_Theme.tres" id="2_8erlr"]
-[ext_resource type="Theme" uid="uid://dq00gsotcj2gn" path="res://Assets/Interfaces/Title_Thme.tres" id="2_gt5r8"]
+[ext_resource type="Texture2D" uid="uid://bw5xo41hixdol" path="res://Assets/Interfaces/Main Menu BG.png" id="2_vmwav"]
+[ext_resource type="Texture2D" uid="uid://cfyqcfehei1fa" path="res://Assets/Interfaces/Transparent Panel.png" id="3_1b6a3"]
+[ext_resource type="Texture2D" uid="uid://cpseu0qf6l81x" path="res://Assets/Sprite_Asset/Sprites/flashbang.png" id="3_bfc26"]
+[ext_resource type="PackedScene" uid="uid://b671u57ttswxd" path="res://Assets/Playground_Asset/debris.tscn" id="4_4eg33"]
+[ext_resource type="FontFile" uid="uid://4xrlyquktbn0" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="4_vmwav"]
+[ext_resource type="Script" uid="uid://o1shdkoiunb3" path="res://Assets/Interfaces/game_title.gd" id="5_1b6a3"]
+[ext_resource type="Texture2D" uid="uid://blc2f5qcb2yhd" path="res://Assets/Sprite_Asset/Sprites/short-knife.png" id="5_vlgu6"]
+[ext_resource type="Texture2D" uid="uid://bfec2tatbx2hh" path="res://Assets/Sprite_Asset/Sprites/Desert Eagle.png" id="6_6tk7t"]
+[ext_resource type="Script" uid="uid://brx0yxv6ypc6a" path="res://Assets/Interfaces/debris_spawner.gd" id="7_rw0pq"]
+[ext_resource type="PackedScene" uid="uid://dyk07mlqx1r22" path="res://Assets/Interfaces/Fade_transition.tscn" id="12_ijgd0"]
 
 [node name="Main Menu" type="Control" unique_id=454850957]
 layout_mode = 3
@@ -13,14 +22,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slo1b")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1703516333]
+[node name="Main Menu BG" type="TextureRect" parent="." unique_id=112710550]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_vmwav")
+expand_mode = 2
+
+[node name="Debris Spawner" type="Node2D" parent="." unique_id=1087306521]
+script = ExtResource("7_rw0pq")
+debris_scene = ExtResource("4_4eg33")
+debris_textures = Array[Texture2D]([ExtResource("5_vlgu6"), ExtResource("6_6tk7t"), ExtResource("3_bfc26")])
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=53170115]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 451.0
+offset_top = 181.0
+offset_right = -448.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1b6a3")
+region_rect = Rect2(0, 0, 264, 314)
+patch_margin_left = 77
+patch_margin_top = 73
+patch_margin_right = 81
+patch_margin_bottom = 81
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1827660431]
 layout_mode = 1
@@ -34,47 +67,67 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=232408018]
+[node name="Game Title" type="Label" parent="MarginContainer" unique_id=232408018]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("2_gt5r8")
+theme_override_fonts/font = ExtResource("4_vmwav")
+theme_override_font_sizes/font_size = 40
 text = "Balls Arena"
+script = ExtResource("5_1b6a3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=566328659]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 1
 alignment = 1
 
 [node name="Campaign" type="Button" parent="MarginContainer/VBoxContainer" unique_id=571933603]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("2_8erlr")
-text = "CAMPAIGN"
+text = "Campaign"
 flat = true
 
 [node name="PVP" type="Button" parent="MarginContainer/VBoxContainer" unique_id=889176617]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("2_8erlr")
+theme_override_colors/font_color = Color(0.36659402, 0.36659488, 0.36659428, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
+disabled = true
 text = "PVP"
 flat = true
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1950324237]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("2_8erlr")
 text = "Settings"
 flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1985986459]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("2_8erlr")
 text = "Quit"
 flat = true
+
+[node name="Fade Transition" parent="." unique_id=1555702215 instance=ExtResource("12_ijgd0")]
+visible = false
+layout_mode = 1
+
+[node name="fade_timer" type="Timer" parent="Fade Transition" unique_id=1214559115]
+autostart = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Campaign" to="." method="_on_campaign_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PVP" to="." method="_on_pvp_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Fade Transition/fade_timer" to="." method="_on_fade_timer_timeout"]

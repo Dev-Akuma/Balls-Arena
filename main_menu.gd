@@ -1,5 +1,6 @@
 extends Control
 
+var button_type = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -9,7 +10,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_campaign_pressed() -> void:
-	get_tree().change_scene_to_file("res://Assets/Game_Assets/campaign_selection.tscn")
+	button_type = "campaign"
+	$"Fade Transition".show()
+	$"Fade Transition/fade_timer".start()
+	$"Fade Transition/AnimationPlayer".play("Fade_in")
 
 func _on_pvp_pressed() -> void:
 	pass # Replace with function body.
@@ -19,3 +23,7 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_fade_timer_timeout() -> void:
+	if button_type == 'campaign' :
+		get_tree().change_scene_to_file("res://Assets/Interfaces/campaign_selection.tscn")

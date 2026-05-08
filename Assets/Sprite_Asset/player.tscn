@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://c8q1yf2o0h5rd"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://Assets/Sprite_Asset/player.gd" id="1_ktdkg"]
+[ext_resource type="PackedScene" uid="uid://b6tq16uryegco" path="res://Assets/Weapon_Assets/knife.tscn" id="2_tl40h"]
+[ext_resource type="FontFile" uid="uid://4xrlyquktbn0" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_uegac"]
+[ext_resource type="Texture2D" uid="uid://ef4e7qrf4xk6" path="res://Assets/Sprite_Asset/Sprites/PLayer-ball.png" id="3_u580t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uegac"]
 radius = 23.194826
 
 [node name="Player" type="CharacterBody2D" unique_id=218334752]
 script = ExtResource("1_ktdkg")
+starting_weapon = ExtResource("2_tl40h")
+base_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1202838132]
+position = Vector2(1.1920929e-06, -1.1920929e-06)
+scale = Vector2(2.8749998, 2.8749998)
+texture = ExtResource("3_u580t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=525611757]
 shape = SubResource("CircleShape2D_uegac")
@@ -24,6 +34,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_uegac")
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -2,6 +2,36 @@
 
 [ext_resource type="Script" uid="uid://cewm5u24w1uve" path="res://Assets/Interfaces/campaign_selection.gd" id="1_ssi52"]
 [ext_resource type="Theme" uid="uid://6gds1wm7rxpl" path="res://Assets/Interfaces/Main_Menu_Font_Theme.tres" id="1_wcdtm"]
+[ext_resource type="FontFile" uid="uid://4xrlyquktbn0" path="res://Assets/Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_a1wia"]
+[ext_resource type="Texture2D" uid="uid://bw5xo41hixdol" path="res://Assets/Interfaces/Main Menu BG.png" id="2_prqn0"]
+[ext_resource type="Script" uid="uid://brx0yxv6ypc6a" path="res://Assets/Interfaces/debris_spawner.gd" id="3_ek7qh"]
+[ext_resource type="PackedScene" uid="uid://b671u57ttswxd" path="res://Assets/Playground_Asset/debris.tscn" id="4_bqo26"]
+[ext_resource type="Script" uid="uid://o1shdkoiunb3" path="res://Assets/Interfaces/game_title.gd" id="4_prqn0"]
+[ext_resource type="Texture2D" uid="uid://blc2f5qcb2yhd" path="res://Assets/Sprite_Asset/Sprites/short-knife.png" id="5_iemum"]
+[ext_resource type="Texture2D" uid="uid://bfec2tatbx2hh" path="res://Assets/Sprite_Asset/Sprites/Desert Eagle.png" id="6_j30n6"]
+[ext_resource type="Texture2D" uid="uid://cpseu0qf6l81x" path="res://Assets/Sprite_Asset/Sprites/flashbang.png" id="7_2530n"]
+[ext_resource type="PackedScene" uid="uid://dyk07mlqx1r22" path="res://Assets/Interfaces/Fade_transition.tscn" id="8_bqo26"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24mnr"]
+content_margin_left = 10.0
+bg_color = Color(0.9529412, 0.9529412, 0.9529412, 0.38039216)
+border_width_bottom = 10
+border_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prqn0"]
+content_margin_left = 10.0
+bg_color = Color(0.9529412, 0.9529412, 0.9529412, 0.38039216)
+border_color = Color(0.9529412, 0.9529412, 0.9529412, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 10.0
 
 [node name="Campaign Selection" type="Control" unique_id=199867762]
 layout_mode = 3
@@ -12,14 +42,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ssi52")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=722458598]
+[node name="BG" type="TextureRect" parent="." unique_id=985801611]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.7882353, 0.16078432, 0.2627451, 1)
+texture = ExtResource("2_prqn0")
+expand_mode = 2
+
+[node name="Debris Spawner" type="Node2D" parent="." unique_id=1403581401]
+position = Vector2(165, 20)
+script = ExtResource("3_ek7qh")
+debris_scene = ExtResource("4_bqo26")
+debris_textures = Array[Texture2D]([ExtResource("5_iemum"), ExtResource("6_j30n6"), ExtResource("7_2530n")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1048827422]
 layout_mode = 1
@@ -28,18 +65,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 20
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=697741292]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_a1wia")
+theme_override_font_sizes/font_size = 30
 text = "Campaign Selection"
+script = ExtResource("4_prqn0")
 
 [node name="Back" type="Button" parent="MarginContainer" unique_id=1614305263]
 layout_mode = 2
@@ -53,22 +93,115 @@ flat = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1711658865]
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1711658865]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 
-[node name="Level 1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=634013306]
-custom_minimum_size = Vector2(60, 60)
+[node name="Level 1" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=634013306]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
 text = "1."
 
-[node name="Level 2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=452017105]
-custom_minimum_size = Vector2(60, 60)
+[node name="Level 2" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=755288481]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme = ExtResource("1_wcdtm")
-text = "1."
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "2."
+
+[node name="Level 3" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=542590563]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "3."
+
+[node name="Level 4" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=1783740715]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "4."
+
+[node name="Level 5" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=521862227]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "5."
+
+[node name="Level 6" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=1437610705]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "6."
+
+[node name="Level 7" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=159034905]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "7."
+
+[node name="Level 8" type="Button" parent="MarginContainer/VBoxContainer/Row1" unique_id=914673434]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "8."
+
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1688180102]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Level 1" type="Button" parent="MarginContainer/VBoxContainer/Row2" unique_id=43222782]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "9."
+
+[node name="Level 2" type="Button" parent="MarginContainer/VBoxContainer/Row2" unique_id=252480232]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_wcdtm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_24mnr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_prqn0")
+text = "10."
+
+[node name="Fade Transition" parent="." unique_id=1555702215 instance=ExtResource("8_bqo26")]
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Level 1" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Level 2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 3" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 4" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 5" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 6" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 7" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row1/Level 8" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row2/Level 1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Row2/Level 2" to="." method="_on_button_pressed"]

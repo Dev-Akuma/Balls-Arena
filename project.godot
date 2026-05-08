@@ -15,9 +15,19 @@ run/main_scene="uid://cp4phu1vrqg2f"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
+
+[layer_names]
+
+2d_physics/layer_2="Weapons"
+2d_physics/layer_4="Hero"
 
 [physics]
 

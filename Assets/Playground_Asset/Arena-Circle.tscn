@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://xbj45fhfakqv"]
+
+[ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://Arena-Circle.gd" id="1_euex6"]
+
+[node name="Arena-Circle" type="Node2D" unique_id=750826448]
+script = ExtResource("1_euex6")
