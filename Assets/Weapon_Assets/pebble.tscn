@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cyfivi3etho63"]
+
+[ext_resource type="Script" uid="uid://d1t8cp7u2qojr" path="res://Assets/Weapon_Assets/pebble.gd" id="1_a4qv1"]
+
+[node name="Pebble" type="Node2D" unique_id=1738259739]
+script = ExtResource("1_a4qv1")
+
+[node name="Timer" type="Timer" parent="." unique_id=128343898]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

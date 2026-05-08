@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b6tq16uryegco"]
+
+[ext_resource type="Script" uid="uid://bxuc3mkth33sp" path="res://Assets/Weapon_Assets/knife.gd" id="1_8bpe6"]
+[ext_resource type="Script" uid="uid://cvodvto1ddo17" path="res://Assets/Weapon_Assets/area_2d.gd" id="2_4w71w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfyku"]
+size = Vector2(92, 20)
+
+[node name="Knife" type="Node2D" unique_id=1362012402]
+script = ExtResource("1_8bpe6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=42882960]
+script = ExtResource("2_4w71w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1771141835]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_hfyku")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

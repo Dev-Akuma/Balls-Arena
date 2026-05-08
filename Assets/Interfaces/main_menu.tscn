@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cp4phu1vrqg2f"]
+
+[ext_resource type="Script" uid="uid://c6xtlvbbnjpj" path="res://main_menu.gd" id="1_slo1b"]
+[ext_resource type="Theme" uid="uid://6gds1wm7rxpl" path="res://Assets/Interfaces/Main_Menu_Font_Theme.tres" id="2_8erlr"]
+[ext_resource type="Theme" uid="uid://dq00gsotcj2gn" path="res://Assets/Interfaces/Title_Thme.tres" id="2_gt5r8"]
+
+[node name="Main Menu" type="Control" unique_id=454850957]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_slo1b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1703516333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1827660431]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=232408018]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_gt5r8")
+text = "Balls Arena"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=566328659]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Campaign" type="Button" parent="MarginContainer/VBoxContainer" unique_id=571933603]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_8erlr")
+text = "CAMPAIGN"
+flat = true
+
+[node name="PVP" type="Button" parent="MarginContainer/VBoxContainer" unique_id=889176617]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_8erlr")
+text = "PVP"
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1950324237]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_8erlr")
+text = "Settings"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1985986459]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_8erlr")
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Campaign" to="." method="_on_campaign_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PVP" to="." method="_on_pvp_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
